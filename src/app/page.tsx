@@ -1,9 +1,12 @@
-// import Image from "next/image";
+import HeroSection from "@/components/heroSection";
+import MapSection from "@/components/mapSection";
 
 export default function Home() {
   return (
     <>
-    <h1 className="text-2xl text-center mt-8px">Aceternity Trial</h1>
+    <HeroSection />
+    <MapSection />
+    <></>
     </>
   );
 }
