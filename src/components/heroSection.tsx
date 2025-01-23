@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
+import Link from "next/link"
 import { SparklesCore } from "./ui/sparkles";
+import { Button } from "./ui/moving-border";
  
 export function HeroSection() {
   return (
@@ -28,7 +30,17 @@ export function HeroSection() {
         {/* Radial Gradient to prevent sharp edges */}
         <div className="absolute inset-0 w-full h-full bg-black [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
       </div>
-    </div>
+      <div className="mt-5">
+                <Link href={"/"}>
+                    <Button
+                    borderRadius="1.75rem"
+                    className="bg-white dark:bg-black text-black dark:text-white border-neutral-200 dark:border-slate-800"
+                    >
+                    Get in Touch
+                    </Button>
+                </Link>
+            </div>
+      </div>
   );
 }
 

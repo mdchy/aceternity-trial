@@ -23,7 +23,7 @@ export default function MapSection() {
           </span>
         </p>
         <p className="text-sm md:text-lg text-neutral-500 max-w-2xl mx-auto py-4">
-          We have servers all over the world. No matter where your you are, the world is yours. Every country is you trade zone.
+          We have servers all over the world. No matter where your you are, the world is yours. Every country is in your trade zone.
         </p>
       </div>
       <WorldMap
