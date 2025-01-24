@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 import {
   motion,
   useAnimationFrame,
@@ -7,8 +7,19 @@ import {
   useMotionValue,
   useTransform,
 } from "framer-motion";
-import { useRef } from "react";
 import { cn } from "@/utils/utils";
+
+type ButtonProps = {
+  borderRadius?: string;
+  children: React.ReactNode;
+  as?: React.ElementType;
+  containerClassName?: string;
+  borderClassName?: string;
+  duration?: number;
+  className?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any; // For additional props
+};
 
 export function Button({
   borderRadius = "1.75rem",
@@ -19,25 +30,14 @@ export function Button({
   duration,
   className,
   ...otherProps
-}: {
-  borderRadius?: string;
-  children: React.ReactNode;
-  as?: any;
-  containerClassName?: string;
-  borderClassName?: string;
-  duration?: number;
-  className?: string;
-  [key: string]: any;
-}) {
+}: ButtonProps) {
   return (
     <Component
       className={cn(
-        "bg-transparent relative text-xl  h-16 w-40 p-[1px] overflow-hidden ",
+        "bg-transparent relative text-xl h-16 w-40 p-[1px] overflow-hidden",
         containerClassName
       )}
-      style={{
-        borderRadius: borderRadius,
-      }}
+      style={{ borderRadius }}
       {...otherProps}
     >
       <div
@@ -59,9 +59,7 @@ export function Button({
           "relative bg-slate-900/[0.8] border border-slate-800 backdrop-blur-xl text-white flex items-center justify-center w-full h-full text-sm antialiased",
           className
         )}
-        style={{
-          borderRadius: `calc(${borderRadius} * 0.96)`,
-        }}
+        style={{ borderRadius: `calc(${borderRadius} * 0.96)` }}
       >
         {children}
       </div>
@@ -69,37 +67,42 @@ export function Button({
   );
 }
 
-export const MovingBorder = ({
-  children,
-  duration = 2000,
-  rx,
-  ry,
-  ...otherProps
-}: {
+type MovingBorderProps = {
   children: React.ReactNode;
   duration?: number;
   rx?: string;
   ry?: string;
-  [key: string]: any;
-}) => {
-  const pathRef = useRef<any>();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any; // For additional props
+};
+
+export const MovingBorder = ({
+  children,
+  duration = 2000,
+  rx = "30%",
+  ry = "30%",
+  ...otherProps
+}: MovingBorderProps) => {
+  const rectRef = useRef<SVGRectElement | null>(null);
   const progress = useMotionValue<number>(0);
 
+  // Animation frame logic to calculate progress along the path
   useAnimationFrame((time) => {
-    const length = pathRef.current?.getTotalLength();
-    if (length) {
-      const pxPerMillisecond = length / duration;
-      progress.set((time * pxPerMillisecond) % length);
+    if (rectRef.current) {
+      const length = rectRef.current.getTotalLength();
+      if (length) {
+        const pxPerMillisecond = length / duration;
+        progress.set((time * pxPerMillisecond) % length);
+      }
     }
   });
 
-  const x = useTransform(
-    progress,
-    (val) => pathRef.current?.getPointAtLength(val).x
+  // Calculate x and y coordinates based on progress
+  const x = useTransform(progress, (val) =>
+    rectRef.current?.getPointAtLength(val)?.x || 0
   );
-  const y = useTransform(
-    progress,
-    (val) => pathRef.current?.getPointAtLength(val).y
+  const y = useTransform(progress, (val) =>
+    rectRef.current?.getPointAtLength(val)?.y || 0
   );
 
   const transform = useMotionTemplate`translateX(${x}px) translateY(${y}px) translateX(-50%) translateY(-50%)`;
@@ -114,14 +117,14 @@ export const MovingBorder = ({
         height="100%"
         {...otherProps}
       >
-        <rect
-          fill="none"
-          width="100%"
-          height="100%"
-          rx={rx}
-          ry={ry}
-          ref={pathRef}
-        />
+      <rect
+        fill="none"
+        width="100%"
+        height="100%"
+        rx={rx}
+        ry={ry}
+        ref={rectRef}
+      />
       </svg>
       <motion.div
         style={{

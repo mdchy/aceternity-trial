@@ -39,7 +39,7 @@ export function HeroSection() {
                     Get in Touch
                     </Button>
                 </Link>
-            </div>
+        </div>
       </div>
   );
 }

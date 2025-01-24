@@ -19,11 +19,27 @@ export const Cover = ({
   const [containerWidth, setContainerWidth] = useState(0);
   const [beamPositions, setBeamPositions] = useState<number[]>([]);
 
-  useEffect(() => {
-    if (ref.current) {
-      setContainerWidth(ref.current?.clientWidth ?? 0);
+//   useEffect(() => {
+//     if (ref.current) {
+//       setContainerWidth(ref.current?.clientWidth ?? 0);
 
-      const height = ref.current?.clientHeight ?? 0;
+//       const height = ref.current?.clientHeight ?? 0;
+//       const numberOfBeams = Math.floor(height / 10); // Adjust the divisor to control the spacing
+//       const positions = Array.from(
+//         { length: numberOfBeams },
+//         (_, i) => (i + 1) * (height / (numberOfBeams + 1))
+//       );
+//       setBeamPositions(positions);
+//     }
+//   }, [ref.current]);
+
+useEffect(() => {
+    if (ref.current) {
+      const container = ref.current; // Capture the current ref value once
+  
+      setContainerWidth(container.clientWidth);
+  
+      const height = container.clientHeight;
       const numberOfBeams = Math.floor(height / 10); // Adjust the divisor to control the spacing
       const positions = Array.from(
         { length: numberOfBeams },
@@ -31,7 +47,8 @@ export const Cover = ({
       );
       setBeamPositions(positions);
     }
-  }, [ref.current]);
+  }, []); // Remove 'ref.current' from the dependency array
+  
 
   return (
     <div
@@ -212,6 +229,7 @@ export const Beam = ({
 
 export const CircleIcon = ({
   className,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   delay,
 }: {
   className?: string;
