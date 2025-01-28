@@ -39,7 +39,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
     >
       <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
         <h2 className="text-lg md:text-4xl mb-4 text-black dark:text-white max-w-4xl">
-          Live Stats 🔴
+          Live Stats 🔘
         </h2>
         <p className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base max-w-sm">
           Here are some live data from our database. 
@@ -99,10 +99,10 @@ export function EvervaultCardDemo() {
 
       <EvervaultCard text="data" />
 
-      <h2 className="dark:text-white text-black mt-4 text-sm font-light">
+      {/* <h2 className="dark:text-white text-black mt-4 text-sm font-light">
         Hover over this card to reveal an awesome effect. Running out of copy
         here.
-      </h2>
+      </h2> */}
       {/* <p className="text-sm border font-light dark:border-white/[0.2] border-black/[0.2] rounded-full mt-4 text-black dark:text-white px-2 py-0.5">
         Watch me hover
       </p> */}
