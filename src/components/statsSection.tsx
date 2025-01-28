@@ -11,7 +11,7 @@ export default function StatsSection() {
           <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
             The total amount that has been transacted through our tech.
           </p>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <EvervaultCardDemo />
             <EvervaultCardDemo />
 
@@ -26,7 +26,7 @@ export default function StatsSection() {
           <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
             The total number of orders processed through our tech.
           </p>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <EvervaultCardDemo />
             <EvervaultCardDemo />
           </div>
@@ -40,7 +40,7 @@ export default function StatsSection() {
           <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-4">
             Number of businesses running off of our tech.
           </p>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <EvervaultCardDemo />
             <EvervaultCardDemo />
           </div>
@@ -54,7 +54,7 @@ export default function StatsSection() {
           <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-4">
             A total account of apps and websites to build that are serving our clients.
           </p>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <EvervaultCardDemo />
             <EvervaultCardDemo />
           </div>
