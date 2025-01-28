@@ -3,6 +3,8 @@ import MapSection from "@/components/mapSection";
 import WeMaintainSection from "@/components/weMaintainSection"
 import SpeedSection from "@/components/speedSection"
 import FeaturesSection from "@/components/featuresSection";
+import ArticleSection from "@/components/articleSection";
+import StatsSection from "@/components/statsSection"
 
 export default function Home() {
   return (
@@ -11,6 +13,8 @@ export default function Home() {
     <WeMaintainSection />
     <SpeedSection />
     <FeaturesSection />
+    <ArticleSection />
+    <StatsSection/>
     <MapSection />
     </>
   );
