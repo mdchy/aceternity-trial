@@ -3,10 +3,12 @@ import React from "react";
 import Link from "next/link"
 import { SparklesCore } from "./ui/sparkles";
 import { Button } from "./ui/moving-border";
+import HeroSubheading from "./heroSubheading";
  
 export function HeroSection() {
   return (
     <div className="h-screen w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md">
+      <HeroSubheading/>
       <h1 className="md:text-7xl text-3xl lg:text-9xl font-bold text-center text-white relative z-20">
         Voyager-7
       </h1>
@@ -36,7 +38,7 @@ export function HeroSection() {
                     borderRadius="1.75rem"
                     className="bg-white dark:bg-black text-black dark:text-white border-neutral-200 dark:border-slate-800"
                     >
-                    Get in Touch
+                    Get in touch
                     </Button>
                 </Link>
         </div>
